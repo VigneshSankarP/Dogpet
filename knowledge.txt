@@ -1,0 +1,792 @@
+# DogPet knowledge file - coding answers for the chat.
+# You can add your own! Format (lines starting with # are ignored outside answers):
+#   Q: key words, another phrase, ...      (what people might type)
+#   T: Group - Title                       (shown in "topics")
+#   A:
+#   your answer... put code between ``` lines
+#   ---
+
+Q: code, coding, programming, programmer, developer, coding help
+T: Coding - what I know
+A:
+I know the basics of Python, JavaScript, TypeScript, Java, C#, SQL, Git, Linux, PowerShell,
+Regex, HTTP/REST, Docker, Big-O, data structures, common errors and good practices.
+Ask in your own words, for example:
+  python read file   |   git undo last commit   |   sql left join   |   js async await
+Type "topics" to see the full list.
+---
+
+Q: python, py, learn python, python print, python variable, python input, hello world python
+T: Python - basics
+A:
+```python
+name = "Sam"            # str
+age = 30                # int
+price = 9.99            # float
+ok = True               # bool
+print("Hello", name)
+answer = input("Your name: ")
+print(type(age))        # <class 'int'>
+```
+Ask me: python list, python dict, python loop, python function, python class,
+python read file, try except, f-string, list comprehension, venv.
+---
+
+Q: python list, list append, list slice, list index, array python, list comprehension, comprehension
+T: Python - lists and list comprehension
+A:
+```python
+nums = [3, 1, 2]
+nums.append(4)          # add at end
+nums.insert(0, 9)       # add at position
+nums.remove(1)          # remove a value
+last = nums.pop()       # remove + return last
+print(nums[0], nums[-1], nums[1:3], len(nums))
+
+squares = [x * x for x in range(10)]
+evens = [x for x in nums if x % 2 == 0]
+```
+---
+
+Q: python dict, dictionary, python dictionary, hashmap python, key value python, dict comprehension
+T: Python - dictionaries
+A:
+```python
+user = {"name": "Sam", "age": 30}
+user["email"] = "sam@example.com"
+print(user.get("phone", "n/a"))     # safe get with default
+for key, value in user.items():
+    print(key, value)
+del user["age"]
+lengths = {w: len(w) for w in ["hi", "hello"]}
+```
+---
+
+Q: python loop, python for, for loop python, while loop, enumerate, range, python while, loop
+T: Python - loops
+A:
+```python
+for i in range(5):              # 0..4
+    print(i)
+for i, item in enumerate(["a", "b"]):
+    print(i, item)
+for a, b in zip([1, 2], ["x", "y"]):
+    print(a, b)
+n = 3
+while n > 0:
+    n -= 1
+    if n == 1:
+        continue                # skip / use break to stop
+```
+---
+
+Q: python function, def, lambda, default argument, kwargs, args, return python
+T: Python - functions
+A:
+```python
+def greet(name, greeting="Hi"):
+    return f"{greeting}, {name}!"
+
+def total(*args, **kwargs):
+    print(args, kwargs)
+    return sum(args)
+
+square = lambda x: x * x
+print(greet("Sam"), total(1, 2, 3, mode="fast"), square(4))
+```
+---
+
+Q: python class, python oop, init, self, inheritance python, dataclass, object python
+T: Python - classes
+A:
+```python
+from dataclasses import dataclass
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+    def bark(self):
+        return f"{self.name} says woof"
+
+class Puppy(Dog):                 # inheritance
+    def bark(self):
+        return super().bark() + "!"
+
+@dataclass
+class Point:
+    x: int
+    y: int
+```
+---
+
+Q: python read file, read file, write file, python file, open file, read line, csv python, python json, json load, json dump, parse json python, file, read, write, save to file, json python, json
+T: Python - files and JSON
+A:
+```python
+with open("notes.txt", "r", encoding="utf-8") as f:
+    text = f.read()               # or: for line in f:
+with open("out.txt", "w", encoding="utf-8") as f:
+    f.write("hello
+")
+
+import json
+with open("data.json") as f:
+    data = json.load(f)
+with open("data.json", "w") as f:
+    json.dump(data, f, indent=2)
+obj = json.loads('{"a": 1}')
+```
+---
+
+Q: try except, python exception, exception handling, raise, finally, python error handling
+T: Python - errors (try / except)
+A:
+```python
+try:
+    value = int("abc")
+except ValueError as e:
+    print("Bad number:", e)
+except (KeyError, IndexError):
+    print("missing")
+else:
+    print("no error")
+finally:
+    print("always runs")
+
+raise ValueError("something is wrong")
+```
+---
+
+Q: python string, f string, fstring, format string, split, join, strip, replace, string method, substring
+T: Python - strings and f-strings
+A:
+```python
+name, n = "Sam", 3.14159
+print(f"Hi {name}, pi is {n:.2f}")
+s = "  a,b,c  "
+s.strip()               # "a,b,c"
+s.strip().split(",")    # ['a', 'b', 'c']
+"-".join(["a", "b"])    # "a-b"
+"hello".replace("l", "L")
+"hello".upper(), "Hello".lower(), "hello"[1:4]
+"ell" in "hello"        # True
+```
+---
+
+Q: venv, virtualenv, virtual environment, pip, pip install, requirement txt, python requests, http request python, api call python
+T: Python - venv, pip and requests
+A:
+```bash
+python -m venv .venv
+.venv\Scripts\activate          # Windows   (Linux/Mac: source .venv/bin/activate)
+pip install requests
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
+```python
+import requests
+r = requests.get("https://api.example.com/items", params={"q": "dog"}, timeout=10)
+r.raise_for_status()
+print(r.json())
+requests.post("https://api.example.com/items", json={"name": "Buddy"})
+```
+---
+
+Q: javascript, js, let const, var let const, let vs const, strict equality, triple equal, double equal, equality javascript
+T: JavaScript - basics
+A:
+```js
+const name = "Sam";      // cannot be reassigned (use by default)
+let count = 0;           // can change
+// avoid var (function-scoped, confusing)
+
+0 == "0"    // true  (loose, converts types)
+0 === "0"   // false (strict - always use ===)
+
+console.log(`Hi ${name}, count is ${count}`);
+```
+Ask me: js array map filter, async await, fetch, destructuring, dom, npm.
+---
+
+Q: map filter reduce, array map, array filter, reduce, js array, javascript array, foreach, arrow function, callback
+T: JavaScript - arrays and arrow functions
+A:
+```js
+const nums = [1, 2, 3, 4];
+const doubled = nums.map(n => n * 2);           // [2,4,6,8]
+const evens   = nums.filter(n => n % 2 === 0);  // [2,4]
+const sum     = nums.reduce((acc, n) => acc + n, 0);
+const found   = nums.find(n => n > 2);          // 3
+nums.forEach((n, i) => console.log(i, n));
+const add = (a, b) => a + b;
+```
+---
+
+Q: async await, promise, async, await, then catch, fetch, fetch api, http request javascript, api call javascript, axios
+T: JavaScript - async/await and fetch
+A:
+```js
+async function getUser(id) {
+  try {
+    const res = await fetch(`https://api.example.com/users/${id}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error("Failed:", err);
+  }
+}
+
+await fetch("/api/items", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ name: "Buddy" }),
+});
+
+const [a, b] = await Promise.all([getUser(1), getUser(2)]);
+```
+---
+
+Q: destructuring, spread operator, spread, js object, javascript object, rest parameter, optional chaining
+T: JavaScript - objects, destructuring, spread
+A:
+```js
+const user = { name: "Sam", age: 30, address: { city: "Pune" } };
+const { name, age } = user;                 // destructuring
+const copy = { ...user, age: 31 };          // spread (copy + override)
+const city = user.address?.city ?? "n/a";   // optional chaining + default
+const [first, ...rest] = [1, 2, 3];         // rest
+Object.keys(user); Object.entries(user);
+JSON.stringify(user); JSON.parse('{"a":1}');
+```
+---
+
+Q: dom, queryselector, addeventlistener, event listener, getelementbyid, innerhtml, html javascript
+T: JavaScript - DOM
+A:
+```js
+const btn = document.querySelector("#save");      // or getElementById("save")
+const items = document.querySelectorAll(".item");
+btn.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector("#msg").textContent = "Saved!";
+});
+const li = document.createElement("li");
+li.textContent = "New item";
+document.querySelector("ul").appendChild(li);
+li.classList.add("active");
+```
+---
+
+Q: npm, node, nodejs, npm install, package json, npx, yarn
+T: Node.js - npm basics
+A:
+```bash
+npm init -y                 # create package.json
+npm install express         # add a dependency
+npm install -D typescript   # dev dependency
+npm run build               # run a script from package.json
+npx some-tool               # run a tool without installing
+npm ci                      # clean install from package-lock.json
+```
+---
+
+Q: typescript, ts, interface, type annotation, generic
+T: TypeScript - basics
+A:
+```ts
+interface User { id: number; name: string; email?: string; }
+type Status = "open" | "closed";
+
+function greet(u: User): string {
+  return `Hi ${u.name}`;
+}
+function first<T>(items: T[]): T | undefined {
+  return items[0];
+}
+```
+---
+
+Q: java, java main, public static void main, hello world java, arraylist, hashmap, java list, java map, java collection
+T: Java - basics and collections
+A:
+```java
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>();
+        names.add("Sam");
+        Map<String, Integer> ages = new HashMap<>();
+        ages.put("Sam", 30);
+        System.out.println(ages.getOrDefault("Bob", 0));
+        for (String n : names) System.out.println(n);
+    }
+}
+```
+---
+
+Q: java stream, stream filter, java lambda, java string equal, equals vs, string comparison java
+T: Java - streams and string compare
+A:
+```java
+List<Integer> evens = nums.stream()
+    .filter(n -> n % 2 == 0)
+    .map(n -> n * 10)
+    .collect(Collectors.toList());
+
+// compare strings with equals, NOT ==
+"abc".equals(text);
+"abc".equalsIgnoreCase(text);
+```
+---
+
+Q: csharp, linq, dotnet, c sharp
+T: C# - basics and LINQ
+A:
+```csharp
+var names = new List<string> { "Sam", "Ann" };
+var ages = new Dictionary<string, int> { ["Sam"] = 30 };
+var shortNames = names.Where(n => n.Length <= 3).OrderBy(n => n).ToList();
+Console.WriteLine($"Hi {names[0]}, total {names.Count}");
+async Task<string> GetAsync(HttpClient http) => await http.GetStringAsync("https://example.com");
+```
+---
+
+Q: sql, select, where clause, sql query, order by, limit, distinct, like
+T: SQL - select basics
+A:
+```sql
+SELECT name, email
+FROM users
+WHERE age >= 18 AND city = 'Pune'
+  AND name LIKE 'S%'
+ORDER BY name ASC
+LIMIT 10;            -- SQL Server: SELECT TOP 10 ...
+
+SELECT DISTINCT city FROM users;
+```
+---
+
+Q: join, sql join, inner join, left join, right join, outer join, full join
+T: SQL - joins
+A:
+```sql
+-- INNER: only rows that match in both tables
+SELECT o.id, u.name
+FROM orders o
+JOIN users u ON u.id = o.user_id;
+
+-- LEFT: all users, orders if they exist (NULL otherwise)
+SELECT u.name, o.id
+FROM users u
+LEFT JOIN orders o ON o.user_id = u.id;
+```
+---
+
+Q: group by, having, count sql, aggregate, sum sql, avg sql
+T: SQL - group by
+A:
+```sql
+SELECT city, COUNT(*) AS people, AVG(age) AS avg_age
+FROM users
+GROUP BY city
+HAVING COUNT(*) > 5          -- filter AFTER grouping (WHERE is before)
+ORDER BY people DESC;
+```
+---
+
+Q: insert, update, delete sql, insert into, sql update, create table, primary key, foreign key, index, sql index
+T: SQL - insert, update, delete, tables
+A:
+```sql
+CREATE TABLE users (
+  id    INT PRIMARY KEY,
+  name  VARCHAR(100) NOT NULL,
+  team_id INT REFERENCES teams(id)
+);
+CREATE INDEX idx_users_name ON users(name);
+
+INSERT INTO users (id, name) VALUES (1, 'Sam');
+UPDATE users SET name = 'Sammy' WHERE id = 1;   -- always use WHERE!
+DELETE FROM users WHERE id = 1;
+```
+---
+
+Q: git, git basic, git command, git status, git add, git commit
+T: Git - everyday commands
+A:
+```bash
+git status                  # what changed
+git add file.txt            # stage a file   (git add -p to pick pieces)
+git commit -m "Fix login bug"
+git log --oneline -10       # recent commits
+git diff                    # unstaged changes
+git diff --staged           # staged changes
+```
+Ask me: git branch, git undo commit, git stash, git rebase, merge conflict, git push.
+---
+
+Q: git branch, branch, checkout, switch branch, new branch, delete branch, git switch
+T: Git - branches
+A:
+```bash
+git branch                    # list branches
+git switch -c feature/login   # create + switch (old: git checkout -b)
+git switch main               # switch back
+git branch -d feature/login   # delete (merged)
+git branch -D feature/login   # force delete
+```
+---
+
+Q: undo commit, undo last commit, git reset, git revert, revert, uncommit, amend, git amend, change commit message, edit commit message, discard change
+T: Git - undo commits and changes
+A:
+```bash
+git commit --amend -m "Better message"   # fix the LAST commit (not pushed yet)
+git reset --soft HEAD~1    # undo last commit, keep changes staged
+git reset HEAD~1           # undo last commit, keep changes unstaged
+git revert <commit>        # safe undo for pushed commits (new commit)
+git restore file.txt       # throw away changes in a file
+git restore --staged file.txt   # unstage
+```
+Careful: git reset --hard deletes your uncommitted work.
+---
+
+Q: git stash, stash
+T: Git - stash
+A:
+```bash
+git stash              # put changes aside
+git stash list
+git stash pop          # bring them back (and remove from stash)
+git stash apply        # bring back but keep in stash
+git stash -u           # include new untracked files
+```
+---
+
+Q: rebase, git rebase, merge vs rebase, git merge, merge, merge conflict, conflict, resolve conflict
+T: Git - merge, rebase and conflicts
+A:
+```bash
+git switch feature && git rebase main     # replay your commits on top of main (clean history)
+git switch main && git merge feature      # merge commit (keeps history as-is)
+```
+Fixing a conflict:
+1. Open the file, find <<<<<<<, =======, >>>>>>> markers
+2. Keep the right code, delete the markers
+3. git add file.txt
+4. git rebase --continue   (or git commit for a merge)
+Give up: git rebase --abort / git merge --abort
+---
+
+Q: git log, git diff, git blame, blame, git history, git show
+T: Git - log, diff, blame
+A:
+```bash
+git log --oneline --graph --all
+git log -p file.txt          # history of one file
+git show <commit>            # what a commit changed
+git blame file.txt           # who changed each line
+git diff main...feature      # changes on a branch
+```
+---
+
+Q: git push, git pull, push, pull, remote, git clone, clone, origin, gitignore, ignore file, git ignore
+T: Git - remotes and .gitignore
+A:
+```bash
+git clone <url>
+git pull --rebase            # get latest
+git push -u origin my-branch # first push of a branch
+git remote -v
+```
+.gitignore example:
+```
+node_modules/
+.venv/
+*.log
+.env
+```
+---
+
+Q: linux, bash, terminal, shell command, ls, cd, mkdir, cp, mv, rm, grep, find file, find command, search text
+T: Linux - files, grep and find
+A:
+```bash
+ls -la            cd folder        pwd
+mkdir -p a/b      cp a.txt b.txt   mv old new     rm -r folder
+cat file.txt      less file.txt    tail -f app.log
+grep -rn "TODO" .                  # search text in files
+find . -name "*.py"                # find files by name
+cmd1 | grep error > errors.txt     # pipe + redirect
+```
+---
+
+Q: chmod, permission, permission denied, chown, sudo, process, kill, ps, top, port in use, port already in use, lsof, netstat
+T: Linux - permissions, processes and ports
+A:
+```bash
+chmod +x script.sh        # make runnable
+chmod 644 file.txt        # rw-r--r--
+ps aux | grep python      # find a process
+kill <pid>                # stop it (kill -9 to force)
+lsof -i :8080             # who uses port 8080
+```
+Windows: netstat -ano | findstr :8080   then   taskkill /PID <pid> /F
+---
+
+Q: tar, zip, unzip, curl, wget, download file, environment variable, env var
+T: Linux - archives, curl, env vars
+A:
+```bash
+tar -czf backup.tgz folder/     tar -xzf backup.tgz
+zip -r out.zip folder/          unzip out.zip
+curl -s https://api.example.com/items
+curl -X POST -H "Content-Type: application/json" -d '{"a":1}' https://api.example.com/items
+export API_KEY=abc ; echo $API_KEY
+```
+---
+
+Q: powershell, ps1, get childitem, cmdlet, windows command, select string
+T: PowerShell - basics
+A:
+```powershell
+Get-ChildItem -Recurse -Filter *.log         # like ls / dir
+Select-String -Path *.txt -Pattern "error"   # like grep
+Get-Process | Sort-Object CPU -Descending | Select-Object -First 5
+Stop-Process -Id 1234
+$env:PATH                                    # environment variable
+Invoke-RestMethod https://api.example.com/items
+```
+---
+
+Q: regex, regular expression, regexp, pattern match
+T: Regex - cheat sheet
+A:
+```
+.      any character          \d  digit       \w  letter/digit/_     \s  space
+*      0 or more              +   1 or more   ?   0 or 1             {2,4} 2 to 4
+^ $    start / end of line    [abc] one of    [^abc] none of         (a|b) a or b
+( )    capture group          \.  a real dot
+email (simple):  ^[\w.+-]+@[\w-]+\.[\w.]+$
+phone digits:    ^\d{10}$
+```
+---
+
+Q: http status, status code, 404, 500, 401, 403, 200, 201, 400, 502, 503
+T: HTTP - status codes
+A:
+200 OK | 201 Created | 204 No Content
+301/302 Redirect | 304 Not Modified
+400 Bad Request (your input is wrong) | 401 Unauthorized (not logged in)
+403 Forbidden (logged in, but not allowed) | 404 Not Found | 409 Conflict | 429 Too Many Requests
+500 Server Error (bug on server) | 502 Bad Gateway | 503 Unavailable | 504 Timeout
+---
+
+Q: rest, rest api, api, http method, get post put delete, crud, endpoint
+T: HTTP - REST APIs
+A:
+GET /items         -> list          GET /items/42     -> read one
+POST /items        -> create        PUT /items/42     -> replace
+PATCH /items/42    -> update part   DELETE /items/42  -> delete
+Tips: use nouns in URLs, return proper status codes, use JSON, version it (/v1/), paginate lists.
+---
+
+Q: big o, time complexity, complexity, space complexity, performance algorithm
+T: CS - Big-O
+A:
+O(1) constant - dict/hash lookup, array index
+O(log n) - binary search
+O(n) - one loop over the data
+O(n log n) - good sorting (merge sort, sorted())
+O(n^2) - loop inside a loop
+O(2^n) - naive recursion like fibonacci
+Tip: a hash map (dict / Map / HashMap) often turns O(n^2) into O(n).
+---
+
+Q: data structure, linked list, stack, queue, tree, graph, heap, hash table, set
+T: CS - data structures
+A:
+Array/List - fast index, slow insert in middle
+Hash map / dict - fast lookup by key
+Set - unique items, fast "is it in?"
+Stack - last in first out (undo, recursion)       Queue - first in first out (tasks, BFS)
+Heap - always gives smallest/largest fast (priority queue)
+Tree - hierarchy; BST keeps sorted order       Graph - nodes + edges (maps, networks)
+```python
+from collections import deque, Counter
+q = deque([1, 2]); q.append(3); q.popleft()
+import heapq; h = [5, 1, 3]; heapq.heapify(h); heapq.heappop(h)   # 1
+```
+---
+
+Q: binary search, sorting algorithm, quicksort, merge sort, bubble sort, sort algorithm
+T: CS - binary search and sorting
+A:
+```python
+def binary_search(items, target):     # items must be sorted
+    lo, hi = 0, len(items) - 1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if items[mid] == target: return mid
+        if items[mid] < target: lo = mid + 1
+        else: hi = mid - 1
+    return -1
+```
+Sorting: use the built-in sort (n log n). Merge sort = split, sort halves, merge.
+Quicksort = pick pivot, smaller left, bigger right. Bubble sort = slow O(n^2), only for learning.
+---
+
+Q: recursion, recursive, factorial, fibonacci, memoization
+T: CS - recursion
+A:
+```python
+def factorial(n):
+    if n <= 1:          # base case - always needed!
+        return 1
+    return n * factorial(n - 1)
+
+from functools import lru_cache
+@lru_cache(None)        # memoization makes this fast
+def fib(n):
+    return n if n < 2 else fib(n - 1) + fib(n - 2)
+```
+---
+
+Q: oop, object oriented, solid, encapsulation, polymorphism, inheritance, abstraction, design pattern
+T: CS - OOP and SOLID
+A:
+Encapsulation - hide internal data behind methods
+Inheritance - a class reuses another class
+Polymorphism - same method name, different behavior
+Abstraction - expose what, hide how
+SOLID: Single responsibility, Open/closed, Liskov substitution, Interface segregation, Dependency inversion
+Prefer composition over inheritance; keep classes small and focused.
+---
+
+Q: docker, container, dockerfile, docker run, docker compose, docker image
+T: Docker - basics
+A:
+```dockerfile
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+CMD ["python", "app.py"]
+```
+```bash
+docker build -t myapp .
+docker run -p 8080:8080 myapp
+docker ps            docker logs <id>        docker stop <id>
+docker compose up -d
+```
+---
+
+Q: json, yaml, yml, json format, json vs yaml, json syntax
+T: Data - JSON and YAML
+A:
+JSON: double quotes only, no trailing commas, no comments.
+```json
+{ "name": "Buddy", "age": 2, "tags": ["dog", "good"], "owner": null }
+```
+YAML: indentation matters (spaces, not tabs).
+```yaml
+name: Buddy
+age: 2
+tags:
+  - dog
+  - good
+```
+Tip: type  json {"a":1}  and I will pretty-print it for you.
+---
+
+Q: vs code, vscode, shortcut, keyboard shortcut, multi cursor, command palette
+T: Tools - VS Code shortcuts
+A:
+Ctrl+Shift+P command palette   |  Ctrl+P open file      |  Ctrl+Shift+F search all files
+Ctrl+D select next match       |  Alt+Click multi-cursor |  Alt+Up/Down move line
+Ctrl+/ comment line            |  F2 rename symbol       |  F12 go to definition
+Ctrl+` terminal                |  Shift+Alt+F format     |  Ctrl+B toggle sidebar
+---
+
+Q: modulenotfounderror, module not found, no module named, importerror, cannot find module
+T: Error - module not found
+A:
+The package is not installed in the Python/Node you are using.
+Python: activate your venv, then  pip install <package>   (check: python -m pip --version)
+Node:   npm install <package>   (and run from the folder that has package.json)
+Also check the spelling and that your file is not named like the package (e.g. requests.py).
+---
+
+Q: keyerror, indexerror, index out of range, list index out of range, indentationerror, indentation error, unexpected indent, syntaxerror
+T: Error - KeyError, IndexError, IndentationError
+A:
+KeyError - dict key does not exist -> use d.get("key", default) or check  if "key" in d
+IndexError - list position too big -> check len(items) before items[i]
+IndentationError - mixed tabs/spaces or wrong indent -> use 4 spaces everywhere
+SyntaxError - look at the line BEFORE the one reported (missing ) or : is common)
+---
+
+Q: nonetype, none type, attributeerror, undefined is not a function, cannot read property, cannot read properties of undefined, null pointer, nullpointerexception, null reference, typeerror
+T: Error - None / null / undefined
+A:
+Something you expected to have a value is empty.
+1. Print / log the variable right before the error line.
+2. Find where it should be set - a function that returned nothing? A missing API field?
+3. Guard it:
+```python
+if user is not None: print(user.name)
+```
+```js
+const city = user?.address?.city ?? "unknown";
+```
+---
+
+Q: cors, access control allow origin, blocked by cors, command not found, is not recognized, not recognized as an internal
+T: Error - CORS and command not found
+A:
+CORS: the browser blocks calls to another domain. Fix it on the SERVER by sending
+Access-Control-Allow-Origin for your site (or call the API from your own backend / dev proxy).
+"command not found" / "is not recognized": the tool is not installed or not in PATH.
+Install it, then open a NEW terminal. Check with:  where <tool>  (Windows) /  which <tool>  (Linux/Mac)
+---
+
+Q: debug, debugging, bug, how to debug, fix bug, not working, broken
+T: Tips - how to debug
+A:
+1. Reproduce it reliably - what exact steps break it?
+2. Read the WHOLE error message and the line number.
+3. Print/log values around the problem (or use a breakpoint).
+4. Shrink the problem: remove code until it works, then add back.
+5. Check recent changes:  git diff
+6. Explain it out loud to me (rubber-duck... rubber-dog debugging!)
+7. Search the exact error text:  type  search <error>
+---
+
+Q: code review, review checklist, pr review, pull request, clean code, best practice, naming, readable code
+T: Tips - clean code and code review
+A:
+Clean code: clear names, small functions doing one thing, no copy-paste, handle errors,
+delete dead code, write a test for the bug you fixed.
+Review checklist: Does it do what the ticket says? Edge cases (empty, null, huge)?
+Errors handled? Secrets not committed? Tests added? Easy to read? Small enough PR?
+---
+
+Q: fizzbuzz, two sum, reverse string, palindrome, interview question, anagram
+T: Interview - classic snippets
+A:
+```python
+for i in range(1, 16):
+    print("FizzBuzz" if i % 15 == 0 else "Fizz" if i % 3 == 0 else "Buzz" if i % 5 == 0 else i)
+
+def two_sum(nums, target):            # O(n) with a dict
+    seen = {}
+    for i, n in enumerate(nums):
+        if target - n in seen: return [seen[target - n], i]
+        seen[n] = i
+
+is_palindrome = lambda s: s == s[::-1]
+is_anagram = lambda a, b: sorted(a) == sorted(b)
+```
+---
